@@ -126,4 +126,4 @@ indexFinder(3);
 	Great job!
 */
 
-//By Nick, Jacob, & Aidan
+//By Nick, Jake, & Aidan
