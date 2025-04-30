@@ -82,11 +82,63 @@ for (let restaurant of restaurants) {
 		- Loop back through, this time printing a template literal that uses the values for each object.
 */
 
+let camry = {
+	features: ["Powered windows", "Powered seats", "CD changer"],
+	year: 2009,
+	make: "Toyota",
+	model: "Camry",
+	style: "sedan",
+	color: "grey"
+};
+
+let highlander = {
+	features: ["Cassette Deck", "Defroster", "Spare tire"],
+	year: 2003,
+	make: "Toyota",
+	model: "Highlander",
+	style: "SUV",
+	color: "dark blue"
+};
+
+let cars = [camry, highlander];
+
+// for (let i = 0; i < cars.length; i++) {
+// 	for (let feature of cars[i].features) {
+// 		console.log(`${cars[i].make} ${cars[i].model} feature - ${feature}`);
+// 	}
+// }
+
+for (let car of cars) {
+	for (let i = 0; i < car.features.length; i++) {
+		console.log(`${car.make} ${car.model} feature #${i} - ${car.features[i]}`);
+	}
+}
+
+
+
 /*
 	Create two objects representing different local attractions (zoo, gardens, museums, etc), each with the following properties: name, location, adultTicketPrice, childTicketPrice, and famousFeatures (array of three strings). Be creative! Place the objects in an array.
 */
 
 // TODO: create objects and put them in an array
+
+let historyMuseum = {
+	name: "History Museum",
+	location: "Forest Park",
+	adultTicketPrice: 15,
+	childTicketPrice: 5,
+	famousFeatures: ["Cool Building", "Historic Building", "Impressive facade"]
+};
+
+let cityMuseum = {
+	name: "City Museum",
+	location: "Downtown",
+	adultTicketPrice: 20,
+	childTicketPrice: 10,
+	famousFeatures: ["Ball Pit", "The Bus", "Getting lost", "Tunnels"]
+};
+
+let museums = [historyMuseum, cityMuseum];
 
 /*
 	Loop through the array, then within that for loop, use a for...in loop to grab values from each key and print them to the console. If you come across a key storing an array, print each element in the array instead of the array itself. Remember that you need a new index variable with each nested FOR loop (i, j are common).
@@ -95,6 +147,31 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: use nested loops to print values inside objects
+
+// for loop
+// 		for ... in
+//			if array, print each element in array
+//			else print values from each key
+
+for (let museum of museums) {
+	for (let key in museum) {
+
+		let value = museum[key];
+
+		if (Array.isArray(value)) {
+			
+			console.log(`${key}:`);
+			
+			for (let i = 0; i < value.length; i++) {
+				console.log(`- ${value[i]}`);
+			}
+
+		} else {
+			console.log(`${key}: ${value}`);
+		}
+
+	}
+}
 
 /*
 	Last task: loop through the outer array and print a single template literal for each attraction using placeholders referencing the object at each index. Here's an example:
@@ -107,3 +184,11 @@ for (let restaurant of restaurants) {
 
 // TODO: Print a template literal
 
+for (let museum of museums) {
+	console.log(`
+		The ${museum.name} is a wonderful museum in ${museum.location}.
+		It boasts Wonderful features such as ${museum.famousFeatures[0]}, ${museum.famousFeatures[1]}, and ${museum.famousFeatures[2]}.
+		Admission is $${museum.adultTicketPrice} for adults, and $${museum.childTicketPrice} for children ages 5-12, and free for
+		children 4 and under.
+	`);
+}
